@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AreaType { spawn, room, hallway };
+public enum AreaType { spawn, room, hallway, exit };
 
 public class Area : MonoBehaviour
 {
-    public Sprite[][] tiles;
+    public GameObject[][] tiles;
 
     public AreaType areaType;
 
@@ -32,4 +32,6 @@ public class Area : MonoBehaviour
     {
         
     }
+
+
 }

@@ -7,12 +7,19 @@ using UnityEngine;
 /// </summary>
 public class DungeonGenerator : MonoBehaviour
 {
-    public Sprite wallprefab;
-    public Sprite floorprefab;
+    [Header("Prefabs")]
+    public GameObject wallprefab;
+    public GameObject floorprefab;
+    [Space(5)]
+    public GameObject spawnPrefab;
+    public GameObject roomPrefab;
+    public GameObject hallwayPrefab;
+    public GameObject exitPrefab;
+    [Space(10)]
 
     public List<Area> areas;
     [HideInInspector]
-    public Sprite[] tiles;
+    public GameObject[] tiles;
 
     [Header("Generation Variables")]
     public int mapSize;
@@ -29,7 +36,7 @@ public class DungeonGenerator : MonoBehaviour
 
     void Start()
     {
-        
+        GenerateNewDungeon(mapSize);
     }
 
     // Ideally will not need to update
@@ -44,7 +51,25 @@ public class DungeonGenerator : MonoBehaviour
     /// <param name="size">size to be used for dungeon width and height</param>
     public void GenerateNewDungeon(int size)
     {
-        tiles = new Sprite[size * size];
+        // make the blank map
+        tiles = new GameObject[size * size];
+        for (int i = 0; i < size * size; i++)
+        {
+            tiles[i] = Instantiate(wallprefab, transform);
+            tiles[i].transform.position = new Vector3(i % size, i / size, 0);
+        }
+
+        // generate spawn
+
+        // generate rooms -> hallways
+
+        // generate the exit
+
+    }
+
+    void AddSpawn(int xPos, int yPos, int width, int height)
+    {
+        
     }
 
     void AddRoom(int xPos, int yPos, int width, int height)
@@ -53,6 +78,11 @@ public class DungeonGenerator : MonoBehaviour
     }
 
     void AddHallway(int xStart, int yStary, int length)
+    {
+
+    }
+
+    void AddExit(int xPos, int yPos, int width, int height)
     {
 
     }
