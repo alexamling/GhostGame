@@ -11,7 +11,7 @@ public class TestScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(new Vector3(Input.GetAxisRaw("Horizontal") *.3f,0,0));
-        transform.Translate(new Vector3(0, Input.GetAxisRaw("Vertical") * .3f, 0));
+        CharacterInfo script = gameObject.GetComponent<CharacterInfo>();
+        script.enabled = false;
     }
 }
